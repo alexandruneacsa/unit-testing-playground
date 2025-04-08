@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.testing.junit.employee.EmployeeSixthTestClass" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-04-08T14:25:21" hostname="192.168.1.6" time="0.015">
+  <properties/>
+  <testcase name="Test #1 - First name: Alexandru" classname="com.testing.junit.employee.EmployeeSixthTestClass" time="0.01"/>
+  <testcase name="Test #2 - First name: Valentin" classname="com.testing.junit.employee.EmployeeSixthTestClass" time="0.001"/>
+  <testcase name="Test #3 - First name: Eduard" classname="com.testing.junit.employee.EmployeeSixthTestClass" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
