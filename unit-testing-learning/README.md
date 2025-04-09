@@ -4,6 +4,8 @@
 A lightweight Java project created for learning purposes, focused on practicing unit testing using JUnit and Mockito. 
 It includes simple and illustrative tests.
 
+---
+
 ## Tools & Technologies
 
 - ☕ **Java 21**
