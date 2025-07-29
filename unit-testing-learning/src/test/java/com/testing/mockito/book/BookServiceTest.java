@@ -24,12 +24,6 @@ public class BookServiceTest {
     @InjectMocks
     private BookService bookService;
 
-    @Captor
-    ArgumentCaptor<Book> inputCaptorBook;
-
-    @Captor
-    ArgumentCaptor<String> inputStringCaptor;
-
     @Test
     public void testGetBooks() {
 
