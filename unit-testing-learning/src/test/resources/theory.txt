@@ -1,0 +1,246 @@
+Introduction
+
+Software testing ensures that our Java code behaves as expected, remains maintainable, and can evolve safely.
+
+Why testing matters:
+	•	Detects defects early in development
+	•	Prevents regressions when refactoring
+	•	Builds developer confidence
+	•	Improves design and documentation
+
+Testing is most effective when it follows a structured approach, guided by the Testing Pyramid and consistent test design patterns.
+
+
+
+The Testing Pyramid Concept
+
+The Testing Pyramid illustrates the balance between types of automated tests:
+	•	Unit Tests → small, fast, and numerous
+	•	Integration Tests → connect components together
+	•	End-to-End Tests → verify the full system behavior
+
+Goal: find the right balance between speed, coverage, and reliability.
+
+The higher you go up the pyramid, the slower and more expensive tests become.
+
+(Insert a pyramid image showing proportions)
+
+
+
+Overview of Testing Layers
+
+Unit Tests
+Verify single methods or classes
+Small
+Very fast
+JUnit, Mockito, AssertJ
+Integration Tests
+Check module interaction
+Medium
+Moderate
+Spring Boot Test, Testcontainers, REST Assured
+E2E Tests
+Validate the entire system flow
+Large
+Slow
+Selenium, Playwright, REST Assured
+
+Each layer complements the others — together, they provide full confidence in the system.
+
+
+
+Unit Testing
+
+Definition:
+Unit tests verify the smallest testable parts of your code — usually one class or one function.
+
+Why it matters:
+	•	Early detection of logic errors
+	•	Encourages clean, modular design
+	•	Enables refactoring with confidence
+
+Common frameworks:
+	•	JUnit 5 — Java testing standard
+	•	Mockito — mocking dependencies
+	•	AssertJ / Hamcrest — expressive assertions
+
+Best practices:
+	•	Test one behavior per test method
+	•	Avoid external dependencies (network, DB, filesystem)
+	•	Use mocks and stubs for isolation
+	•	Keep tests fast and deterministic
+
+
+
+Test Structure and Patterns
+
+To make tests clear and readable, follow standard test design patterns.
+
+🧩 1. Arrange–Act–Assert (AAA)
+
+This is the most common structure for a test method:
+	1.	Arrange – set up data, mocks, and environment
+	2.	Act – execute the method or action under test
+	3.	Assert – verify that the outcome matches expectations
+
+Example
+
+✅ Why it helps:
+	•	Improves readability and consistency
+	•	Makes intent of each test clear
+	•	Easier debugging when something fails
+
+
+🧩 2. Given–When–Then
+
+Originating from BDD, but also useful in standard tests:
+	•	Given – the initial context (setup)
+	•	When – the action or event
+	•	Then – the expected result
+
+Example
+
+✅ Why it helps:
+	•	Focuses on behavior, not implementation
+	•	Easier for non-developers to understand
+	•	Aligns perfectly with BDD practices
+
+🧩 3. Four-Phase Test Pattern
+
+A variation of AAA used in many testing frameworks:
+	1.	Setup – prepare objects and environment
+	2.	Exercise – run the code under test
+	3.	Verify – check outcomes
+	4.	Teardown – clean up (close DB, clear mocks, etc.)
+
+✅ Why it helps:
+	•	Especially useful for integration and E2E tests
+	•	Keeps resource management organized
+
+
+
+Integration Testing
+
+Definition:
+Integration tests verify that different parts of your system work together properly.
+
+Typical use cases:
+	•	Repository + database interaction
+	•	Controller + service + repository layers
+	•	Communication between microservices
+
+Java tools:
+	•	Spring Boot Test: runs full or partial application contexts
+	•	Testcontainers: spins up real dependencies like databases in Docker
+	•	REST Assured: sends real HTTP requests to your APIs
+
+Best practices:
+	•	Use lightweight databases (like H2) or Dockerized ones
+	•	Reset the state after each test
+	•	Avoid dependencies between test cases
+
+
+
+End-to-End (E2E) Testing
+
+Definition:
+E2E tests verify the complete user journey across all layers (frontend, backend, database).
+
+Examples:
+	•	Logging in and viewing a dashboard
+	•	Submitting a form and verifying the result in the database
+	•	Full API flow validation
+
+Tools:
+	•	Selenium WebDriver – browser automation
+	•	Playwright / Cypress – modern frameworks for fast and reliable testing
+	•	REST Assured – API-level E2E validation
+
+Challenges:
+	•	Slower execution
+	•	Harder to maintain when UI or APIs change
+
+Best practice:
+
+Keep E2E tests minimal — only cover the most critical paths.
+
+Slide 9 – Test-Driven Development (TDD)
+
+Definition:
+A development practice where tests are written before the implementation code.
+
+Cycle (Red–Green–Refactor):
+	1.	Red: Write a failing test (feature not yet implemented)
+	2.	Green: Write minimal code to make the test pass
+	3.	Refactor: Improve the code while keeping tests green
+
+Why TDD matters for juniors:
+	•	Forces you to think about expected behavior first
+	•	Leads to cleaner, modular, testable design
+	•	Provides a safety net for future changes
+
+Java tools:
+JUnit 5 + Mockito + IDE integration (IntelliJ, Eclipse)
+
+
+
+Behavior-Driven Development (BDD)
+
+Definition:
+BDD extends TDD by describing behavior in a natural, human-readable language, promoting collaboration between developers, testers, and business people.
+
+Structure:
+
+Example (Gherkin + Cucumber):
+
+Tools:
+	•	Cucumber (Java) – executes Gherkin scenarios
+	•	JUnit Integration – runs Cucumber tests
+	•	Spring Boot + Cucumber – integration for real-world apps
+
+Benefits:
+	•	Common language across roles
+	•	Living documentation
+	•	Helps identify missing requirements
+
+
+
+Continuous Testing & CI/CD
+
+Continuous testing integrates automated testing into your build and deployment pipelines.
+
+Pipeline example:
+	1.	Build project
+	2.	Run unit tests
+	3.	Run integration tests (Testcontainers, Spring Boot)
+	4.	Run E2E tests (Selenium, Playwright)
+	5.	Generate reports and coverage
+
+Tools:
+	•	Jenkins, GitHub Actions, GitLab CI
+	•	JaCoCo (coverage), Surefire (reports), Allure (dashboards)
+
+Goal:
+
+Detect problems as early as possible and deliver reliable software continuously.
+
+
+
+Best Practices
+	•	Follow the Testing Pyramid balance
+	•	Use Arrange–Act–Assert for consistent test structure
+	•	Write clear, behavior-focused tests
+	•	Keep tests fast, independent, repeatable
+	•	Avoid fragile tests that depend on environment or order
+	•	Maintain test code quality — it’s production code too
+	•	Automate everything in CI/CD
+
+
+
+Summary & Key Takeaways
+	•	The Testing Pyramid ensures efficiency and structure
+	•	Unit, Integration, and E2E tests target different levels of risk
+	•	TDD improves design quality
+	•	BDD improves communication and understanding
+	•	AAA and Given–When–Then make tests readable and consistent
+	•	Continuous testing builds confidence in your Java projects
